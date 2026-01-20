@@ -25,7 +25,7 @@ Self-service Internal Developer Platform — Python-powered CLI that lets develo
 1. **Clone the repository and enter the directory**
 
    ```bash
-   git clone https://github.com/your-username/sentinel-platform.git
+   git clone https://github.com/thelovearinze/sentinel-platform.git
    cd sentinel-platform
 
 2. **Create and activate a virtual environment**
@@ -61,6 +61,7 @@ Received Platform Request for: Sentinel-CRM
 2. Initializing Platform Engine
 3. Validating Configuration (Plan)
 4. Provisioning Resources (Apply)
+
 SUCCESS: Project 'Sentinel-CRM' is live.
 
 Testing
