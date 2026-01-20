@@ -6,13 +6,13 @@ Self-service Internal Developer Platform — Python-powered CLI that lets develo
 
 ## Features
 
-- **Self-service CLI**:Simple, guided workflow instead of Jira tickets or copy-paste scripts
+- **Self-service CLI**: Simple, guided workflow instead of Jira tickets or copy-paste scripts
 
-- **Automated IaC Generation**:Generates clean Terraform code from Jinja2 templates and standardized blueprints
+- **Automated IaC Generation**: Generates clean Terraform code from Jinja2 templates and standardized blueprints
 
-- **Zero-touch provisioning**:Automatically runs `terraform plan` and `terraform apply`
+- **Zero-touch provisioning**: Automatically runs `terraform plan` and `terraform apply`
 
-- **Post-deployment validation**:Confirms that provisioned resources reach the expected operational state
+- **Post-deployment validation**: Confirms that provisioned resources reach the expected operational state
 
 ## Requirements
 
@@ -52,12 +52,7 @@ Self-service Internal Developer Platform — Python-powered CLI that lets develo
 Provision your first environment
 
     python portal.py provision
-
-Example output flow:
-
-Project name ..........: Sentinel-CRM
-Environment ...........: production
-Team ..................: crm-team
+    
 
 Example Output
 
@@ -71,7 +66,7 @@ SUCCESS: Project 'Sentinel-CRM' is live.
 Testing
 Run the unit tests (no AWS credentials required):
 
-     ````bash
+     
           python test_platform.py
 
 Error Handling
