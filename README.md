@@ -1,60 +1,95 @@
-A Python-based self-service internal developer platform that automates AWS infrastructure provisioning.
-It runs as a CLI tool that lets developers request production-ready environments without manual operational work.
+markdown
+
+# Sentinel Platform
+
+Self-service Internal Developer Platform (IDP) — Python-powered CLI that lets developers provision production-ready AWS environments (VPC and related resources) in minutes, without tickets or manual operations.
+
+[![Python](https://img.shields.io/badge/python-3.10+-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/your-username/sentinel-platform/ci.yml?branch=main&style=for-the-badge)](https://github.com/your-username/sentinel-platform/actions)  
+*(Replace placeholders with your actual repo name / workflow path)*
 
 ## Features
 
-- **Self-Service CLI**
-  Request infrastructure using a simple CLI workflow instead of tickets or ad-hoc scripts.
+- **Self-service CLI**  
+  Simple, guided workflow instead of Jira tickets or copy-paste scripts
 
-- **Automated IaC Generation**
-  Generates Terraform code from Jinja2 templates and standardized blueprints.
+- **Automated IaC Generation**  
+  Generates clean Terraform code from Jinja2 templates and standardized blueprints
 
-- **Zero-Touch Provisioning**
-  Runs `terraform plan` and `terraform apply` automatically to provision VPC infrastructure.
+- **Zero-touch provisioning**  
+  Automatically runs `terraform plan` and `terraform apply`
 
-- **Post-Deployment Checks**
-  Validates that provisioned resources reach the expected operational state after creation.
+- **Post-deployment validation**  
+  Confirms that provisioned resources reach the expected operational state
+
+## Demo
+
+Here's what a real provisioning run looks like:
+
+![Sentinel Platform CLI Demo](assets/demo.gif)
+
+*(Add a short animated GIF here showing: running `python portal.py provision`, the interactive prompts, Terraform output, and the final SUCCESS message. Record using tools like Kapwing, Licecap, or ScreenToGif. Keep file size under 3–4 MB for fast loading.)*
 
 ## Requirements
 
-- Python 3.10
-- Terraform installed globally
-- AWS CLI credentials with permissions to create VPC resources
+- Python 3.10 or higher
+- Terraform ≥ 1.5 (installed globally)
+- AWS credentials with permissions to create VPCs and related resources (`ec2:CreateVpc`, etc.)
 
-## Installation and Setup
+## Quick Start
 
-### 1. Clone the repository
+1. **Clone the repository and enter the directory**
 
-```bash
-git clone https://github.com/your-username/sentinel-platform.git
-cd sentinel-platform
-2. Set up a Python virtual environment
+   ```bash
+   git clone https://github.com/your-username/sentinel-platform.git
+   cd sentinel-platform
+
+2. **Create and activate a virtual environment**
+
+
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate    # Linux / macOS
+# On Windows: venv\Scripts\activate
+
+2. **Install dependenciesbash**
+
 pip install -r requirements.txt
-3. Configure environment variables
-export OPENAI_API_KEY="your_key_here"
-export AWS_ACCESS_KEY_ID="your_aws_key"
-export AWS_SECRET_ACCESS_KEY="your_aws_secret"
-export AWS_REGION="eu-west-1"
-Usage
-Run the CLI to provision a new project:
 
+3. **Set required environment variables**
+
+export OPENAI_API_KEY="sk-..."
+export AWS_ACCESS_KEY_ID="AKIA..."
+export AWS_SECRET_ACCESS_KEY="..."
+export AWS_REGION="eu-west-1" # or your preferred region
+
+
+Provision your first environmen
 python portal.py provision
-Example Output
-Received Platform Request for: Sentinel-CRM
-1. Generating Infrastructure Blueprint
-2. Initializing Platform Engine
-3. Validating Configuration (Plan)
-4. Provisioning Resources (Apply)
+
+Example output flow:
+
+Project name ..........: Sentinel-CRM
+Environment ...........: production
+Team ..................: crm-team
+
+Received request for Sentinel-CRM
+Generating blueprint...
+Initializing engine...
+Planning & applying Terraform...
 SUCCESS: Project 'Sentinel-CRM' is live.
+
 Testing
-Run unit tests locally without connecting to AWS:
+Run the unit tests (no AWS credentials required):
 
+python -m unittest discover tests
+# or
 python test_platform.py
-Error Handling
-Infrastructure failures
-If Terraform fails during apply (for example due to quota limits), the platform captures and reports the specific error returned by Terraform.
 
-Post-provisioning failures
-If resources are created but do not reach the expected state, the deployment is marked as failed even if Terraform exits successfully.
+Error Handling
+- If Terraform fails to apply (e.g., quota limits), the deployer captures the stderr logs and reports the specific AWS error code.
+
+- If the resource is created but does not reach an "Available" state, the Monitor flags the deployment as a FAILURE despite the Terraform success code.
+
