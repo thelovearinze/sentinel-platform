@@ -4,34 +4,15 @@ markdown
 
 Self-service Internal Developer Platform (IDP) — Python-powered CLI that lets developers provision production-ready AWS environments (VPC and related resources) in minutes, without tickets or manual operations.
 
-[![Python](https://img.shields.io/badge/python-3.10+-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
-[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/your-username/sentinel-platform/ci.yml?branch=main&style=for-the-badge)](https://github.com/your-username/sentinel-platform/actions)  
-*(Replace placeholders with your actual repo name / workflow path)*
-
 ## Features
 
-- **Self-service CLI**  
-  Simple, guided workflow instead of Jira tickets or copy-paste scripts
+- **Self-service CLI**:Simple, guided workflow instead of Jira tickets or copy-paste scripts
 
-- **Automated IaC Generation**  
-  Generates clean Terraform code from Jinja2 templates and standardized blueprints
+- **Automated IaC Generation**:Generates clean Terraform code from Jinja2 templates and standardized blueprints
 
-- **Zero-touch provisioning**  
-  Automatically runs `terraform plan` and `terraform apply`
+- **Zero-touch provisioning**:Automatically runs `terraform plan` and `terraform apply`
 
-- **Post-deployment validation**  
-  Confirms that provisioned resources reach the expected operational state
-
-## Demo
-
-Here's what a real provisioning run looks like:
-
-![Sentinel Platform CLI Demo](assets/demo.gif)
-
-*(Add a short animated GIF here showing: running `python portal.py provision`, the interactive prompts, Terraform output, and the final SUCCESS message. Record using tools like Kapwing, Licecap, or ScreenToGif. Keep file size under 3–4 MB for fast loading.)*
+- **Post-deployment validation**:Confirms that provisioned resources reach the expected operational state
 
 ## Requirements
 
@@ -49,12 +30,12 @@ Here's what a real provisioning run looks like:
 
 2. **Create and activate a virtual environment**
 
-
+   ````bash
 python3 -m venv venv
 source venv/bin/activate    # Linux / macOS
-# On Windows: venv\Scripts\activate
 
-2. **Install dependenciesbash**
+
+4. **Install dependencies**
 
 pip install -r requirements.txt
 
