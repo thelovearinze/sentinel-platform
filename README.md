@@ -13,7 +13,9 @@ A Python-based self-service internal developer platform that automates AWS infra
 - Terraform installed globally
 - AWS CLI credentials with permissions to create VPC resources
 
+```markdown
 ## Installation / Setup
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/your-username/sentinel-platform.git
@@ -25,12 +27,14 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
+
 3. Configure credentials:
 
 OPENAI_API_KEY=your_key_here
 AWS_ACCESS_KEY_ID=your_aws_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret
 AWS_REGION=eu-west-1
+
 
 4. Usage
 
@@ -39,21 +43,23 @@ Run the CLI to provision a new project:
 python portal.py provision
 
 
+
 5. Example output
 
 Received Platform Request for: Sentinel-CRM
-
 1. Generating Infrastructure Blueprint
 2. Initializing Platform Engine
 3. Validating Configuration (Plan)
 4. Provisioning Resources (Apply)
 SUCCESS: Project 'Sentinel-CRM' is live.
 
+
 6. Testing
 
 Run unit tests locally without connecting to AWS:
 
 python test_platform.py
+
 
 Error Handling
 
