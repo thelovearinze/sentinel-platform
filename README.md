@@ -61,10 +61,10 @@ Received Platform Request for: Sentinel-CRM
 2. Initializing Platform Engine
 3. Validating Configuration (Plan)
 4. Provisioning Resources (Apply)
-
 SUCCESS: Project 'Sentinel-CRM' is live.
 
 Testing
+
 Run the unit tests (no AWS credentials required):
 
      
