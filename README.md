@@ -2,7 +2,7 @@ markdown
 
 # Sentinel Platform
 
-Self-service Internal Developer Platform (IDP) — Python-powered CLI that lets developers provision production-ready AWS environments (VPC and related resources) in minutes, without tickets or manual operations.
+Self-service Internal Developer Platform — Python-powered CLI that lets developers provision production-ready AWS environments (VPC and related resources) in minutes, without tickets or manual operations.
 
 ## Features
 
@@ -31,24 +31,27 @@ Self-service Internal Developer Platform (IDP) — Python-powered CLI that lets 
 2. **Create and activate a virtual environment**
 
    ````bash
-python3 -m venv venv
-source venv/bin/activate    # Linux / macOS
+    python3 -m venv venv
+    source venv/bin/activate    # Linux / macOS
 
 
 4. **Install dependencies**
-
-pip install -r requirements.txt
+   
+   ````bash
+      pip install -r requirements.txt
 
 3. **Set required environment variables**
 
-export OPENAI_API_KEY="sk-..."
-export AWS_ACCESS_KEY_ID="AKIA..."
-export AWS_SECRET_ACCESS_KEY="..."
-export AWS_REGION="eu-west-1" # or your preferred region
+     ````bash
+    export OPENAI_API_KEY="sk-..."
+    export AWS_ACCESS_KEY_ID="AKIA..."
+    export AWS_SECRET_ACCESS_KEY="..."
+    export AWS_REGION="eu-west-1" # or your preferred region
 
 
-Provision your first environmen
-python portal.py provision
+Provision your first environment
+
+    python portal.py provision
 
 Example output flow:
 
@@ -56,18 +59,20 @@ Project name ..........: Sentinel-CRM
 Environment ...........: production
 Team ..................: crm-team
 
-Received request for Sentinel-CRM
-Generating blueprint...
-Initializing engine...
-Planning & applying Terraform...
+Example Output
+
+Received Platform Request for: Sentinel-CRM
+1. Generating Infrastructure Blueprint
+2. Initializing Platform Engine
+3. Validating Configuration (Plan)
+4. Provisioning Resources (Apply)
 SUCCESS: Project 'Sentinel-CRM' is live.
 
 Testing
 Run the unit tests (no AWS credentials required):
 
-python -m unittest discover tests
-# or
-python test_platform.py
+     ````bash
+          python test_platform.py
 
 Error Handling
 - If Terraform fails to apply (e.g., quota limits), the deployer captures the stderr logs and reports the specific AWS error code.
