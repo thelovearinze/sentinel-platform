@@ -1,21 +1,23 @@
+# make a backup first
+cp README.md README.md.bak
+# remove leading spaces/tabs before triple backticks
+sed -E 's/^[[:space:]]+```/```/' -i '' README.md
+
+cat > README.md <<'EOF'
 # Sentinel Platform: Internal Developer Portal
 
-A Python-based self-service internal developer platform that automates AWS infrastructure provisioning.  
+A Python-based self-service internal developer platform that automates AWS infrastructure provisioning.
 It runs as a CLI tool that lets developers request production-ready environments without manual operational work.
 
 ## Features
 
-- **Self-Service CLI**  
-  Request infrastructure using a simple CLI workflow instead of tickets or ad-hoc scripts.
+- **Self-Service CLI** request infrastructure using a simple CLI workflow instead of tickets or ad-hoc scripts.
 
-- **Automated IaC Generation**  
-  Generates Terraform code from Jinja2 templates and standardized blueprints.
+- **Automated IaC Generation** generates Terraform code from Jinja2 templates and standardized blueprints.
 
-- **Zero-Touch Provisioning**  
-  Runs `terraform plan` and `terraform apply` automatically to provision VPC infrastructure.
+- **Zero-Touch Provisioning** runs `terraform plan` and `terraform apply` automatically to provision VPC infrastructure.
 
-- **Post-Deployment Checks**  
-  Validates that provisioned resources reach the expected operational state after creation.
+- **Post-Deployment Checks** validates that provisioned resources reach the expected operational state after creation.
 
 ## Requirements
 
@@ -32,37 +34,43 @@ git clone https://github.com/your-username/sentinel-platform.git
 cd sentinel-platform
 
 
-  - 1. "Set up Python virtual environment"
-    commands: |
-      python3 -m venv venv
-      source venv/bin/activate
-      pip install -r requirements.txt
+### 2. Set up a Python virtual environment
 
-  - 2.  "Configure environment variables"
-    commands: |
-      export OPENAI_API_KEY="sk-example-openai-key"
-      export AWS_ACCESS_KEY_ID="AKIAEXAMPLE123456"
-      export AWS_SECRET_ACCESS_KEY="exampleAwsSecretKeyValue123456"
-      export AWS_REGION="eu-west-1"
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
-usage:
-  - description: "Provision a new environment using the CLI"
-    commands: |
-      python portal.py provision
+### 3. Configure environment variables
 
-example_output: |
-  Received Platform Request for: Sentinel-CRM
-  1. Generating Infrastructure Blueprint
-  2. Initializing Platform Engine
-  3. Validating Configuration (Plan)
-  4. Provisioning Resources (Apply)
-  SUCCESS: Project 'Sentinel-CRM' is live.
+export OPENAI_API_KEY="your_key_here"
+export AWS_ACCESS_KEY_ID="your_aws_key"
+export AWS_SECRET_ACCESS_KEY="your_aws_secret"
+export AWS_REGION="region"
 
-testing:
-  - description: "Run unit tests locally without connecting to AWS"
-    commands: |
-      python test_platform.py
+Usage
 
-error_handling:
-  - "Infrastructure failures: Terraform errors during apply (for example quota limits) are captured and reported."
-  - "Post-provisioning failures: Resources that fail health or readiness checks mark the deployment as failed even if Terraform exits successfully."
+Run the CLI to provision a new project:
+python portal.py provision
+
+Example Output
+
+Received Platform Request for: Sentinel-CRM
+1. Generating Infrastructure Blueprint
+2. Initializing Platform Engine
+3. Validating Configuration (Plan)
+4. Provisioning Resources (Apply)
+SUCCESS: Project 'Sentinel-CRM' is live.
+
+
+Testing
+
+Run unit tests locally without connecting to AWS:
+
+python test_platform.py
+
+Error Handling
+
+Infrastructure failures: If Terraform fails during apply (for example due to quota limits), the platform captures and reports the specific error returned by Terraform.
+
+Post-provisioning failures: If resources are created but do not reach the expected state, the deployment is marked as failed even if Terraform exits successfully.
+EOF
