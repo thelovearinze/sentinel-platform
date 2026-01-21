@@ -1,5 +1,3 @@
-markdown
-
 # Sentinel Platform
 
 Self-service Internal Developer Platform — Python-powered CLI that lets developers provision production-ready AWS environments (VPC and related resources) in minutes, without tickets or manual operations.
