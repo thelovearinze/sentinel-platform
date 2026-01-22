@@ -30,7 +30,7 @@ Self-service Internal Developer Platform — Python-powered CLI that lets develo
 
    ````bash
     python3 -m venv venv
-    source venv/bin/activate    # Linux / macOS
+    source venv/bin/activate    
 
 
 4. **Install dependencies**
